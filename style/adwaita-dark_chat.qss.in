@@ -1,0 +1,121 @@
+/*
+ * Adwaita Dark für TeamSpeak 3: Chatverlauf und Info-Ansicht.
+ * Erzeugt von ts3-adwaita-theme, nicht von Hand ändern.
+ *
+ * TeamSpeak rendert Chat und Info-Bereich als Qt-Rich-Text. Die Klassen stammen aus
+ * TS3s eigener default_chat.qss; hier bekommen sie nur andere Farben.
+ */
+
+p {
+  padding: 0px;
+  margin: 0px;
+}
+
+a {
+  color: @accent_text;
+}
+
+/* Namen, Kanäle, Server */
+
+.TextMessage_UserLink,
+.TextMessage_OfflineLink,
+.TextMessage_ChannelLink,
+.TextMessage_ServerLink {
+  color: @accent_text;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.TextMessage_HostName {
+  color: @fg;
+  font-weight: bold;
+}
+
+/* Normale Textnachrichten */
+
+.TextMessage_Message,
+.TextMessage_Text {
+  color: @fg;
+}
+
+/* Willkommen, Host-Nachricht, Anstupsen */
+
+.TextMessage_Welcome,
+.TextMessage_HostMessage,
+.TextMessage_HostMsg,
+.TextMessage_Poke {
+  color: @success_text;
+}
+
+/* Statusmeldungen gedimmt, damit Nachrichten hervortreten */
+
+.TextMessage_Normal,
+.TextMessage_Connected,
+.TextMessage_ClientConnected,
+.TextMessage_ClientJoined,
+.TextMessage_Disconnected,
+.TextMessage_ClientDisconnected,
+.TextMessage_ClientSwitched,
+.TextMessage_ClientLeft,
+.TextMessage_ChannelCreated,
+.TextMessage_ChannelDeleted,
+.TextMessage_ChannelEdited,
+.TextMessage_ChannelMoved,
+.TextMessage_ServerEdited,
+.TextMessage_GroupAssigned,
+.TextMessage_GroupRevoked,
+.TextMessage_TalkPowerAssigned,
+.TextMessage_TalkPowerRevoked,
+.TextMessage_TalkPowerRequested {
+  color: @fg_dim;
+}
+
+.TextMessage_Time {
+  color: @fg_dim;
+}
+
+.TextMessage_BeginHistory,
+.TextMessage_EndHistory {
+  color: @fg_disabled;
+}
+
+/* Rauswurf, Bann, Verbindungsabbruch, Fehler */
+
+.TextMessage_ClientDropped,
+.TextMessage_ClientKicked,
+.TextMessage_ClientBanned,
+.TextMessage_ServerError {
+  color: @destructive_text;
+}
+
+/* Info-Ansicht (Server, Kanal, Client) */
+
+.InfoFrame_Title .TextMessage_UserLink,
+.InfoFrame_Title .TextMessage_ChannelLink,
+.InfoFrame_Title .TextMessage_ServerLink {
+  color: @fg;
+}
+
+.InfoFrame_Title .InfoFrame_CustomNick {
+  color: @accent_text;
+}
+
+.Highlight,
+.InfoFrame_Table td.Highlight {
+  color: @accent_text;
+}
+
+.Important,
+.InfoFrame_Table td.Important {
+  color: @destructive_text;
+}
+
+.Active,
+.InfoFrame_Table td.Active {
+  color: @success_text;
+}
+
+.Inactive,
+.InfoFrame_Table td.Inactive {
+  color: @fg_dim;
+}

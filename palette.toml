@@ -1,0 +1,41 @@
+# Farben nach libadwaita (Dark), abgelesen aus adw-gtk3-dark und libadwaita 1.9.
+# Abgeleitete Töne (Hover, Rahmen, gedimmter Text …) berechnet build.py daraus.
+
+[base]
+window_bg = "#222226"
+view_bg = "#1d1d20"
+headerbar_bg = "#2e2e32"
+sidebar_bg = "#2e2e32"
+dialog_bg = "#36363a"
+popover_bg = "#36363a"
+fg = "#ffffff"
+# Papirus-Dark zeichnet einfarbige Symbole in diesem Ton.
+icon_fg = "#dfdfdf"
+
+[state]
+success = "#26a269"
+warning = "#e5a50a"
+destructive = "#c01c28"
+# Gelb für „abwesend", wie GNOME-Statusanzeigen.
+away = "#f6d32d"
+
+# Die zehn Akzentfarben aus GNOME-Einstellungen → Darstellung (Reihenfolge wie dort).
+[accents]
+blue = "#3584e4"
+teal = "#2190a4"
+green = "#3a944a"
+yellow = "#c88800"
+orange = "#ed5b00"
+red = "#e62d42"
+pink = "#d56199"
+purple = "#9141ac"
+slate = "#6f8396"
+maia = "#16a085"
+
+# Farben der Servergruppen-Abzeichen (S, C, O, Q, V), aus der GNOME-Palette.
+[groups]
+server_admin = "#e01b24"
+channel_admin = "#ff7800"
+operator = "#3584e4"
+query = "#9141ac"
+voice = "#2ec27e"

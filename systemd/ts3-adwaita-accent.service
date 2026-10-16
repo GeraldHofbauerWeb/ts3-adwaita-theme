@@ -1,0 +1,12 @@
+[Unit]
+Description=TeamSpeak 3: Adwaita-Dark an die GNOME-Akzentfarbe anpassen
+PartOf=graphical-session.target
+After=graphical-session.target
+
+[Service]
+ExecStart=@ROOT@/tools/accent-watch.sh
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=graphical-session.target

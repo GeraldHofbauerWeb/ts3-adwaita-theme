@@ -1,0 +1,273 @@
+# Zuordnung TeamSpeak-Icon-Schlüssel → Papirus-Symbol.
+#
+# src / badge:
+#   "a:<name>"        Papirus-Dark/16x16/actions/<name>.svg
+#   "s:<cat>/<name>"  Papirus/16x16/symbolic/<cat>/<name>-symbolic.svg
+#   "d:<name>"        Papirus-Dark/16x16/devices/<name>.svg
+#   "p:<name>"        Papirus-Dark/16x16/places/<name>.svg
+#   "shape:<name>"    eigene Form aus build.py (dot, star, bubble, letter-X …)
+# color / badge_color:
+#   fg (Standard), dim, accent, success, warning, destructive, away, group:<name>
+#
+# Das Abzeichen (badge) sitzt unten rechts auf einem ausgestanzten Kreis.
+
+[icons]
+# --- Kanalbaum: Clients ---------------------------------------------------
+PLAYER_OFF            = { src = "shape:dot", color = "dim" }
+PLAYER_ON             = { src = "shape:dot-talking", color = "accent" }
+PLAYER_COMMANDER_OFF  = { src = "shape:star", color = "dim" }
+PLAYER_COMMANDER_ON   = { src = "shape:star-talking", color = "accent" }
+PLAYER_WHISPER        = { src = "shape:ring-talking", color = "accent" }
+PLAYER_CHAT           = { src = "s:actions/chat-message-new" }
+AWAY                  = { src = "s:status/night-light", color = "away" }
+PRESENT               = { src = "s:actions/feather-user-check", color = "success" }
+INPUT_MUTED           = { src = "s:status/microphone-disabled", color = "destructive", solid = true }
+OUTPUT_MUTED          = { src = "s:status/audio-volume-muted", color = "destructive", solid = true }
+HARDWARE_INPUT_MUTED  = { src = "s:status/microphone-hardware-disabled", color = "dim", solid = true }
+HARDWARE_OUTPUT_MUTED = { src = "s:status/audio-volume-muted-blocking", color = "dim", solid = true }
+INPUT_MUTED_LOCAL     = { src = "s:status/audio-volume-muted", color = "warning", solid = true }
+IS_TALKER             = { src = "s:actions/lucide-megaphone", color = "success" }
+ON_WHISPERLIST        = { src = "shape:small-dot", color = "destructive" }
+
+# --- Servergruppen-Standardicons -------------------------------------------
+GROUP_100 = { src = "shape:letter-C", color = "group:channel_admin" }
+GROUP_200 = { src = "shape:letter-O", color = "group:operator" }
+GROUP_300 = { src = "shape:letter-S", color = "group:server_admin" }
+GROUP_500 = { src = "shape:letter-Q", color = "group:query" }
+GROUP_600 = { src = "shape:letter-V", color = "group:voice" }
+
+# --- Kanalbaum: Kanäle und Server -----------------------------------------
+CHANNEL_GREEN             = { src = "shape:bubble-outline" }
+CHANNEL_GREEN_SUBSCRIBED  = { src = "shape:bubble" }
+CHANNEL_YELLOW            = { src = "shape:bubble-outline", color = "warning" }
+CHANNEL_YELLOW_SUBSCRIBED = { src = "shape:bubble", color = "warning" }
+CHANNEL_RED               = { src = "shape:bubble-outline", color = "destructive" }
+CHANNEL_RED_SUBSCRIBED    = { src = "shape:bubble", color = "destructive" }
+CHANNEL_PRIVATE           = { src = "shape:bubble", badge = "s:actions/lock", badge_color = "fg" }
+CHANNEL_COMMANDER         = { src = "shape:bubble", badge = "shape:star", badge_color = "accent" }
+SERVER_GREEN              = { src = "s:devices/network-server" }
+DEFAULT                   = { src = "s:actions/go-home" }
+MODERATED                 = { src = "s:actions/lucide-megaphone-off", color = "warning", solid = true }
+MUSIC                     = { src = "s:actions/music-note-single" }
+CHANNEL_CHAT              = { src = "s:actions/view-conversation-balloon" }
+
+# --- Ping -------------------------------------------------------------------
+PING_1            = { src = "s:status/network-wireless-signal-excellent", color = "success" }
+PING_2            = { src = "s:status/network-wireless-signal-good" }
+PING_3            = { src = "s:status/network-wireless-signal-ok", color = "warning" }
+PING_4            = { src = "s:status/network-wireless-signal-weak", color = "destructive" }
+PING_CALCULATING  = { src = "s:status/network-wireless-acquiring", color = "dim" }
+PING_DISCONNECTED = { src = "s:status/network-wireless-offline", color = "dim" }
+
+# --- Kanal-Aktionen ---------------------------------------------------------
+CHANNEL_CREATE        = { src = "shape:bubble", badge = "s:actions/list-add" }
+CHANNEL_CREATE_SPACER = { src = "s:actions/list-drag-handle", badge = "s:actions/list-add" }
+CHANNEL_CREATE_SUB    = { src = "shape:bubble", badge = "s:actions/go-jump" }
+CHANNEL_DELETE        = { src = "shape:bubble", badge = "s:actions/window-close", badge_color = "destructive" }
+CHANNEL_EDIT          = { src = "shape:bubble", badge = "s:actions/document-edit" }
+CHANNEL_SWITCH        = { src = "shape:bubble", badge = "s:actions/go-next", badge_color = "accent" }
+CHANNEL_EXPAND_ALL    = { src = "s:actions/go-bottom" }
+CHANNEL_EXPAND_SUB    = { src = "s:actions/go-down" }
+CHANNEL_COLLAPSE_ALL  = { src = "s:actions/go-top" }
+CHANNEL_COLLAPSE_SUB  = { src = "s:actions/go-up" }
+MAKE_CURRENT_CHANNEL_DEFAULT = { src = "s:actions/go-home", badge = "s:actions/feather-check", badge_color = "accent" }
+
+# --- Abonnieren -------------------------------------------------------------
+SUBSCRIBE_MODE                  = { src = "s:actions/feather-eye" }
+UNSUBSCRIBE_MODE                = { src = "s:actions/feather-eye-off" }
+SUBSCRIBE_TO_CHANNEL            = { src = "shape:bubble", badge = "s:actions/feather-check", badge_color = "accent" }
+SUBSCRIBE_TO_CHANNEL_FAMILY     = { src = "shape:bubble", badge = "s:actions/list-add", badge_color = "accent" }
+SUBSCRIBE_TO_ALL_CHANNELS       = { src = "shape:bubbles", badge = "s:actions/feather-check", badge_color = "accent" }
+UNSUBSCRIBE_FROM_CHANNEL        = { src = "shape:bubble-outline", badge = "s:actions/window-close" }
+UNSUBSCRIBE_FROM_CHANNEL_FAMILY = { src = "shape:bubble-outline", badge = "s:actions/list-remove" }
+UNSUBSCRIBE_FROM_ALL_CHANNELS   = { src = "shape:bubbles-outline", badge = "s:actions/window-close" }
+
+# --- Clients: Moderation ----------------------------------------------------
+KICK_FROM_CHANNEL          = { src = "s:status/avatar-default", badge = "shape:bubble", badge_color = "destructive" }
+KICK_FROM_SERVER           = { src = "s:status/avatar-default", badge = "s:devices/network-server", badge_color = "destructive" }
+BAN_CLIENT                 = { src = "s:status/avatar-default", badge = "s:actions/blueman-block", badge_color = "destructive" }
+BAN_LIST                   = { src = "s:actions/view-list", badge = "s:actions/blueman-block", badge_color = "destructive" }
+COMPLAINT_LIST             = { src = "s:actions/view-list", badge = "s:status/dialog-warning", badge_color = "warning" }
+SEND_COMPLAINT             = { src = "s:actions/tools-report-bug" }
+POKE                       = { src = "s:actions/feather-zap", color = "warning" }
+MOVE_CLIENT_TO_OWN_CHANNEL = { src = "s:status/avatar-default", badge = "s:actions/go-jump", badge_color = "accent" }
+CHANGE_NICKNAME            = { src = "a:edit-rename" }
+RENAME                     = { src = "a:edit-rename" }
+PHONETICSNICKNAME          = { src = "a:text-speak" }
+CLIENT_SHOW                = { src = "s:actions/view-reveal" }
+CLIENT_HIDE                = { src = "s:actions/view-conceal" }
+TOGGLE_SERVER_QUERY_CLIENTS = { src = "s:apps/utilities-terminal", badge = "s:actions/feather-eye" }
+
+# --- Talk Power ---------------------------------------------------------------
+TALK_POWER_REQUEST               = { src = "a:hand" }
+TALK_POWER_CANCEL_REQUEST        = { src = "a:hand", badge = "s:actions/window-close", badge_color = "destructive" }
+TALK_POWER_GRANT                 = { src = "s:actions/lucide-megaphone", badge = "s:actions/feather-check", badge_color = "success" }
+TALK_POWER_REVOKE                = { src = "s:actions/lucide-megaphone-off", solid = true, badge = "s:actions/window-close", badge_color = "destructive" }
+TALK_POWER_GRANT_NEXT            = { src = "s:actions/lucide-megaphone", badge = "s:actions/go-next", badge_color = "success" }
+TALK_POWER_REVOKE_ALL_GRANT_NEXT = { src = "s:actions/lucide-megaphone-off", solid = true, badge = "s:actions/go-next", badge_color = "warning" }
+
+# --- Freunde, Identitäten, Konto ---------------------------------------------
+ADD_FRIEND             = { src = "s:status/avatar-default", badge = "s:actions/list-add", badge_color = "success" }
+REMOVE_FRIEND          = { src = "s:status/avatar-default", badge = "s:actions/list-remove" }
+ADD_FOE                = { src = "s:status/avatar-default", badge = "s:actions/blueman-block", badge_color = "destructive" }
+REMOVE_FOE             = { src = "s:status/avatar-default", badge = "s:actions/window-close" }
+EDIT_FRIEND_FOE_STATUS = { src = "s:status/avatar-default", badge = "s:actions/document-edit" }
+CONTACT                = { src = "a:view-pim-contacts" }
+INVITE_BUDDY           = { src = "a:mail-invitation" }
+IDENTITY_MANAGER       = { src = "a:user-identity" }
+IDENTITY_ADD           = { src = "s:status/avatar-default", badge = "s:actions/list-add", badge_color = "accent" }
+IDENTITY_REMOVE        = { src = "s:status/avatar-default", badge = "s:actions/list-remove" }
+IDENTITY_DEFAULT       = { src = "s:status/avatar-default", badge = "shape:star", badge_color = "accent" }
+IDENTITY_EXPORT        = { src = "s:actions/document-export" }
+IDENTITY_IMPORT        = { src = "s:actions/document-import" }
+MYTS_ACCOUNT           = { src = "s:status/avatar-default" }
+MYTS_ACCOUNT_ONLINE    = { src = "s:status/avatar-default", badge = "shape:small-dot", badge_color = "success" }
+MYTS_ACCOUNT_OFFLINE   = { src = "s:status/avatar-default", color = "dim" }
+MYTS_ACCOUNT_ERROR     = { src = "s:status/avatar-default", badge = "s:status/dialog-warning", badge_color = "destructive" }
+REGISTER               = { src = "s:actions/feather-user-plus" }
+SYNC                   = { src = "s:emblems/emblem-synchronizing" }
+SYNC_ENABLE            = { src = "s:emblems/emblem-synchronizing", color = "success" }
+SYNC_DISABLE           = { src = "s:emblems/emblem-synchronizing", color = "dim" }
+DELETE_AVATAR          = { src = "s:status/avatar-default", badge = "s:actions/window-close", badge_color = "destructive" }
+DELETE_AVATAR_OTHER    = { src = "s:status/avatar-default", badge = "s:actions/window-close", badge_color = "destructive" }
+UPLOAD_AVATAR          = { src = "s:status/avatar-default", badge = "s:actions/go-up", badge_color = "accent" }
+
+# --- Rechte, Sicherheit, Token -----------------------------------------------
+SECURITY                   = { src = "s:actions/feather-shield" }
+PERMISSION_OVERVIEW        = { src = "s:actions/feather-shield", badge = "s:actions/feather-eye" }
+PERMISSIONS_SERVER_GROUPS  = { src = "a:system-users", badge = "s:actions/feather-shield" }
+PERMISSIONS_CHANNEL_GROUPS = { src = "shape:bubbles", badge = "s:actions/feather-shield" }
+PERMISSIONS_CHANNELS       = { src = "shape:bubble", badge = "s:actions/feather-shield" }
+PERMISSIONS_CLIENTS        = { src = "s:status/avatar-default", badge = "s:actions/feather-shield" }
+PERMISSIONS_CHANNEL_CLIENT = { src = "s:status/avatar-default", badge = "shape:bubble" }
+TOKEN                      = { src = "s:status/dialog-password" }
+TOKEN_USE                  = { src = "s:status/dialog-password", badge = "s:actions/feather-check", badge_color = "accent" }
+TEMP_SERVER_PASSWORD       = { src = "s:actions/lock", badge = "s:actions/feather-clock" }
+TEMP_SERVER_PASSWORD_ADD   = { src = "s:actions/lock", badge = "s:actions/list-add" }
+VIRTUALSERVER_EDIT         = { src = "s:devices/network-server", badge = "s:actions/document-edit" }
+SERVER_LOG                 = { src = "a:history" }
+SERVER_QUERY               = { src = "s:apps/utilities-terminal" }
+HOSTER_BUTTON              = { src = "s:devices/network-server" }
+
+# --- Verbindung und Lesezeichen ---------------------------------------------
+CONNECT              = { src = "s:actions/feather-log-in" }
+CONNECT_NEW_TAB      = { src = "s:actions/feather-log-in", badge = "s:actions/list-add" }
+DISCONNECT           = { src = "s:actions/feather-log-out" }
+DISCONNECT_ALL       = { src = "s:actions/feather-log-out" }
+BOOKMARK_ADD         = { src = "a:bookmark-new" }
+BOOKMARK_ADD_FOLDER  = { src = "a:bookmark-add-folder" }
+BOOKMARK_DUPLICATE   = { src = "a:edit-duplicate" }
+BOOKMARK_MANAGER     = { src = "a:bookmarks-organize" }
+BOOKMARK_REMOVE      = { src = "a:bookmark-remove" }
+BOOKMARK_SET_FOR_ALL = { src = "a:bookmarks-bookmarked" }
+
+# --- Chat und Nachrichten -----------------------------------------------------
+MESSAGES          = { src = "s:actions/view-conversation-balloon" }
+NEW_CHAT          = { src = "s:actions/chat-message-new" }
+MESSAGE_INCOMING  = { src = "s:actions/go-down", color = "dim" }
+MESSAGE_OUTGOING  = { src = "s:actions/go-up", color = "dim" }
+MESSAGE_INFO      = { src = "s:actions/info-outline", color = "dim" }
+OFFLINE_MESSAGES  = { src = "s:places/mail-inbox" }
+NOTIFICATIONS     = { src = "s:status/notifications" }
+EMOTICON          = { src = "s:actions/insert-emoticon" }
+URLCATCHER        = { src = "s:actions/link" }
+WEBLIST           = { src = "s:actions/globe" }
+TEXTFORMAT            = { src = "a:format-text-color" }
+TEXTFORMAT_BOLD       = { src = "s:actions/format-text-bold" }
+TEXTFORMAT_ITALIC     = { src = "s:actions/format-text-italic" }
+TEXTFORMAT_UNDERLINE  = { src = "s:actions/format-text-underline" }
+TEXTFORMAT_FOREGROUND = { src = "a:format-text-color" }
+
+# --- Flüstern -------------------------------------------------------------------
+WHISPER                        = { src = "s:status/audio-volume-low" }
+WHISPERLISTS                   = { src = "s:actions/view-list-bullet", badge = "s:status/audio-volume-low" }
+WHISPERHISTORY                 = { src = "s:actions/document-open-recent" }
+TOGGLE_BLOCK_INCOMING_WHISPERS = { src = "s:status/audio-volume-low", badge = "s:actions/blueman-block", badge_color = "destructive" }
+
+# --- Audio --------------------------------------------------------------------
+CAPTURE             = { src = "s:devices/audio-input-microphone" }
+ACTIVATE_MICROPHONE = { src = "s:status/microphone-sensitivity-high", color = "accent" }
+PLAYBACK            = { src = "s:status/audio-volume-high" }
+VOLUME              = { src = "s:status/audio-volume-high" }
+3D_SOUND            = { src = "s:devices/audio-speakers" }
+3D_SOUND_ME         = { src = "s:devices/audio-speakers", badge = "s:status/avatar-default", badge_color = "accent" }
+3D_SOUND_OTHER      = { src = "s:devices/audio-speakers", badge = "s:status/avatar-default" }
+PLAY                = { src = "s:actions/media-playback-start" }
+STOP                = { src = "s:actions/media-playback-stop" }
+RECORDING_START     = { src = "s:actions/media-record", color = "destructive" }
+RECORDING_STOP      = { src = "s:actions/media-playback-stop" }
+SOUNDPACK           = { src = "s:actions/music-note-single" }
+
+# --- Dateien ------------------------------------------------------------------
+FILETRANSFER = { src = "s:status/network-transmit-receive" }
+DOWNLOAD     = { src = "a:download" }
+UPLOAD       = { src = "a:upload" }
+FILE_HOME    = { src = "s:actions/go-home" }
+FILE_REFRESH = { src = "s:actions/view-refresh" }
+FILE_UP      = { src = "a:go-parent-folder" }
+FOLDER       = { src = "s:places/folder" }
+ADD_FOLDER   = { src = "s:actions/folder-new" }
+SELECTFOLDER = { src = "a:document-open-folder" }
+ICONVIEWER   = { src = "s:actions/view-app-grid" }
+ICONSVIEW    = { src = "s:actions/view-grid" }
+LISTVIEW     = { src = "s:actions/view-list" }
+
+# --- Allgemeine Aktionen ------------------------------------------------------
+ADD          = { src = "s:actions/list-add" }
+APPLY        = { src = "a:dialog-ok-apply" }
+COPY         = { src = "s:actions/edit-copy" }
+COPY_URL     = { src = "a:url-copy" }
+EDIT         = { src = "s:actions/document-edit" }
+DELETE       = { src = "s:actions/edit-delete" }
+QUIT         = { src = "s:actions/application-exit" }
+FIND         = { src = "s:actions/edit-find" }
+SEARCH       = { src = "s:actions/edit-find" }
+FILTER_CLEAR = { src = "s:actions/edit-clear" }
+SEARCH_CLEAR = { src = "s:actions/edit-clear" }
+SEARCH_HIDE  = { src = "s:actions/window-close" }
+CLOSE_BUTTON     = { src = "s:actions/window-close" }
+TAB_CLOSE_BUTTON = { src = "s:actions/window-close" }
+DOWN         = { src = "s:actions/pan-down" }
+DOWN_ARROW   = { src = "s:actions/pan-down" }
+UP           = { src = "s:actions/pan-up" }
+UP_ARROW     = { src = "s:actions/pan-up" }
+REFRESH      = { src = "s:actions/view-refresh" }
+RELOAD       = { src = "a:reload" }
+SORT_BY_NAME = { src = "a:sort-name" }
+SWITCH_ADVANCED = { src = "s:actions/view-fullscreen" }
+SWITCH_STANDARD = { src = "s:actions/view-restore" }
+
+# --- Programm, Einstellungen, Add-ons ----------------------------------------
+ABOUT             = { src = "s:actions/help-about" }
+INFO              = { src = "s:actions/info-outline" }
+CHANGELOG         = { src = "s:actions/documentation" }
+CHECK_UPDATE      = { src = "s:status/software-update-available" }
+SETTINGS          = { src = "s:actions/settings" }
+GUISETUP          = { src = "a:tools-wizard" }
+HOTKEYS           = { src = "s:devices/input-keyboard" }
+PLUGINS           = { src = "s:actions/extension" }
+ADDON             = { src = "s:actions/extension" }
+ADDON_COLLECTION  = { src = "s:actions/lucide-package" }
+ADDON_BROWSER     = { src = "s:actions/globe" }
+ADDON_ICONPACK    = { src = "s:actions/view-app-grid" }
+ADDON_SOUNDPACK   = { src = "s:devices/audio-speakers" }
+ADDON_THEME       = { src = "s:actions/color-select" }
+ADDON_TRANSLATION = { src = "s:actions/lucide-languages" }
+WARNING           = { src = "s:status/dialog-warning", color = "warning" }
+WARNING_EXTERNAL_LINK = { src = "s:status/dialog-warning", color = "destructive" }
+ERROR             = { src = "s:status/dialog-error", color = "destructive" }
+LOADING_IMAGE     = { src = "s:status/image-loading", color = "dim" }
+BROKEN_IMAGE      = { src = "a:image-missing", color = "dim" }
+
+# Emoticons im Chat (Papirus-Emotes sind farbig und bleiben es).
+[emoticons]
+"smile.svg"     = { src = "m:face-smile", codes = [":)", ":-)"] }
+"laugh.svg"     = { src = "m:face-laugh", codes = [":D", ":-D"] }
+"cool.svg"      = { src = "m:face-cool", codes = ["8)", "8-)"] }
+"twinkle.svg"   = { src = "m:face-wink", codes = [";)", ";-)"] }
+"sad.svg"       = { src = "m:face-sad", codes = [":(", ":-("] }
+"angry.svg"     = { src = "m:face-angry", codes = [":C", ":-C"] }
+"scream.svg"    = { src = "m:face-surprise", codes = [":0", ":-0"] }
+"skeptical.svg" = { src = "m:face-uncertain", codes = [":/", ":-/"] }
+"stunned.svg"   = { src = "m:face-embarrassed", codes = [":x", ":-x"] }
+"tongue.svg"    = { src = "m:face-raspberry", codes = [":P", ":-P"] }
