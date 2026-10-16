@@ -531,18 +531,10 @@ QTreeView::branch {
 	border-image: none;
 }
 
-/* Die Einrückung links gehört optisch zur Zeile; ohne diese Regeln malt Qt sie
-   in der vollen Palettenfarbe, während die Zeile selbst die Auswahlfarbe trägt. */
-QTreeView::branch:hover {
-	background-color: @hover;
-}
-
-QTreeView::branch:selected {
-	background-color: @selection;
-}
-
-QTreeView::branch:selected:!active {
-	background-color: @hover_strong;
+/* Die Auswahl beginnt am Eintrag. Den Bereich der Einrückung malt Qt mit der
+   Palettenfarbe (inaktiv Fusion-Blaugrau), QTreeView::branch:selected greift dort nicht. */
+QTreeView {
+	show-decoration-selected: 0;
 }
 
 QTreeView::branch:has-children:!has-siblings:closed,
