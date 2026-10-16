@@ -10,9 +10,14 @@ Farbe wechseln
   In TeamSpeak unter Extras > Optionen > Design das Thema und das Icon Pack mit
   derselben Farbe wählen und TeamSpeak neu starten.
 
+Overwolf-Knopf
+  Das schwarze Overwolf-Logo in der Werkzeugleiste bringt TeamSpeak unter Windows
+  selbst mit, ein Symbolpaket kann es nicht ersetzen. Wer den Knopf nicht braucht,
+  entfernt ihn per Rechtsklick auf die Werkzeugleiste > Werkzeugleiste anpassen.
+
 Wenn etwas falsch aussieht
-  Gebaut und getestet wurde der Stil unter Linux, wo TeamSpeak den Qt-Stil Fusion
-  verwendet. Unter Windows hilft bei Darstellungsfehlern oft, unter
+  Gebaut wurde der Stil unter Linux, geprüft zusätzlich mit dem Windows-Client
+  unter Wine. Bei Darstellungsfehlern hilft oft, unter
   Extras > Optionen > Design den Stil auf "Fusion" zu stellen.
 
 Entfernen

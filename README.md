@@ -53,7 +53,9 @@ Für Windows gibt es unter Releases einen Installer, `ts3-adwaita-theme-setup-<v
 
 Administratorrechte braucht der Installer nicht. Uninstaller und Lizenztexte liegen unter `%LOCALAPPDATA%\ts3-adwaita-theme`, entfernen lässt sich alles über Einstellungen → Apps. Der Installer ist nicht signiert, deshalb warnt Windows SmartScreen vor einem unbekannten Herausgeber. Über „Weitere Informationen" und „Trotzdem ausführen" startet er trotzdem.
 
-Getestet ist der Installer unter Wine, die Aktivierung mit dem Linux-Client (derselbe Mechanismus). Wie der Stil unter Windows selbst aussieht, ist noch ungeprüft. Zeigt TeamSpeak dort Darstellungsfehler, hilft wahrscheinlich *Extras → Optionen → Design → Stil: Fusion*, denn mit Fusion ist der Stil gebaut.
+Getestet ist alles mit dem Windows-Client 3.6.2 unter Wine: Installer, Aktivierung und Darstellung. Auf einem echten Windows fehlt der Test noch. Zeigt TeamSpeak dort Darstellungsfehler, hilft wahrscheinlich *Extras → Optionen → Design → Stil: Fusion*, denn mit Fusion ist der Stil gebaut.
+
+Den Knopf „Overwolf installieren" gibt es nur unter Windows. Sein schwarzes Logo kommt fest aus TeamSpeak, kein Iconpack-Schlüssel und kein Stylesheet-Selektor erreicht es. Entfernen lässt er sich per Rechtsklick auf die Werkzeugleiste → *Werkzeugleiste anpassen*.
 
 Selbst bauen:
 
