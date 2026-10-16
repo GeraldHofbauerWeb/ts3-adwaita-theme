@@ -33,8 +33,8 @@
 /* ---- Grundlagen ------------------------------------------------------- */
 
 QWidget {
-	font-family: "Noto Sans", "Cantarell", sans-serif;
-	font-size: 10pt;
+	font-family: @font_family;
+	font-size: @font_size;
 	color: @fg;
 	selection-background-color: @accent;
 	selection-color: @accent_fg;

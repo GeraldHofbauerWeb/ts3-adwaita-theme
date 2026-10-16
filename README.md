@@ -47,6 +47,22 @@ python3 build.py --uninstall
 tools/install-sync.sh --remove
 ```
 
+## Windows
+
+Für Windows gibt es unter Releases einen Installer, `ts3-adwaita-theme-setup-<version>.exe`. Er kopiert die zehn Akzent-Varianten nach `%APPDATA%\TS3Client`, mit Segoe UI statt Noto Sans als Schrift. Eine Variante, die der Windows-Akzentfarbe folgt, gibt es dort nicht. Beim Installieren wählt man eine Farbe, und der Installer trägt Stil und passendes Iconpack in `package_inst_temp.ini` ein. Diese Datei liest TeamSpeak beim nächsten Start, übernimmt die Auswahl und löscht sie wieder. Genauso aktiviert TeamSpeaks eigener Installer neue Add-ons.
+
+Administratorrechte braucht der Installer nicht. Uninstaller und Lizenztexte liegen unter `%LOCALAPPDATA%\ts3-adwaita-theme`, entfernen lässt sich alles über Einstellungen → Apps. Der Installer ist nicht signiert, deshalb warnt Windows SmartScreen vor einem unbekannten Herausgeber. Über „Weitere Informationen" und „Trotzdem ausführen" startet er trotzdem.
+
+Getestet ist der Installer unter Wine, die Aktivierung mit dem Linux-Client (derselbe Mechanismus). Wie der Stil unter Windows selbst aussieht, ist noch ungeprüft. Zeigt TeamSpeak dort Darstellungsfehler, hilft wahrscheinlich *Extras → Optionen → Design → Stil: Fusion*, denn mit Fusion ist der Stil gebaut.
+
+Selbst bauen:
+
+```sh
+tools/build-windows.sh
+```
+
+Das Skript braucht wine, xvfb-run und curl. Es lädt Inno Setup 6.7.3 von GitHub, prüft die SHA-256-Summe und richtet Inno Setup in einem eigenen Wine-Präfix unter `~/.cache/ts3-adwaita-theme` ein. Mit `/ACCENT=maia` wählt man die Farbe beim Aufruf vor, mit `/VERYSILENT /ACCENT=maia` läuft die Installation ohne Fenster. `/ACTIVATE=0` installiert nur und lässt die Auswahl in TeamSpeak, wie sie ist.
+
 ## Warum es kein .ts3_style-Paket gibt
 
 TeamSpeak hat einen eigenen Installer (`package_inst`) für `.ts3_style`- und `.ts3_iconpack`-Pakete. Mit mehreren Varianten in einem Paket benimmt er sich ungünstig: Er sortiert die Dateiliste selbst, schreibt den Paketnamen an den alphabetisch ersten Eintrag (hier `-Blue`) und aktiviert den letzten. Liegen die Dateien dagegen direkt im Profil, erkennt TeamSpeak sie beim Start und zeigt sie unter ihrem Dateinamen an. Iconpacks lädt TeamSpeak 3.6 außerdem nur als Zip-Archiv, ein Ordner gleichen Namens wird ignoriert.
@@ -61,7 +77,8 @@ TeamSpeak hat einen eigenen Installer (`package_inst`) für `.ts3_style`- und `.
 | `style/assets/` | Häkchen, Radiopunkt, Pfeile und Schließen-Kreuz als SVG-Vorlagen |
 | `iconpack/mapping.toml` | Zuordnung der 213 TeamSpeak-Symbolschlüssel zu Papirus-Symbolen |
 | `build.py` | ersetzt die Platzhalter, färbt die Symbole ein, schreibt Stile und Zip-Archive |
-| `tools/` | Kontaktbogen, Vorschau, Akzent-Sync |
+| `installer/` | Inno-Setup-Skript und die Texte, die der Windows-Installer mitliefert |
+| `tools/` | Kontaktbogen, Vorschau, Akzent-Sync, Windows-Build |
 
 Ohne Argumente baut `build.py` alle Varianten nach `build/profile/` und prüft sie: Jedes SVG muss sich parsen und mit `rsvg-convert` rendern lassen, und alle Symbolschlüssel aus TeamSpeaks eigenem Mono-Pack müssen belegt sein.
 
@@ -95,6 +112,6 @@ tools/preview.sh clean
 
 Der eigene Code (Skripte, Stylesheets, Formen, Zuordnung) steht unter der MIT-Lizenz, siehe `LICENSE`.
 
-Das Repo enthält keine Papirus-Dateien. `build.py` liest die Symbole beim Bauen aus dem lokal installierten Papirus-Icon-Theme, und die erzeugten Iconpacks stehen deshalb unter dessen Lizenz (GPL-3.0). Aus TeamSpeak selbst liest das Skript nur die Liste der Symbolschlüssel.
+Das Repo enthält keine Papirus-Dateien. `build.py` liest die Symbole beim Bauen aus dem lokal installierten [Papirus-Icon-Theme](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme) des Papirus Development Team. Die erzeugten Iconpacks sind davon abgeleitet und stehen deshalb wie Papirus unter der GPL-3.0. Der Windows-Installer enthält solche Iconpacks und liefert den GPL-3-Text und die Lizenzhinweise mit. Aus TeamSpeak selbst liest das Skript nur die Liste der Symbolschlüssel, ausgeliefert wird keine TeamSpeak-Datei.
 
-TeamSpeak ist eine Marke der TeamSpeak Systems GmbH. Dieses Projekt hat mit TeamSpeak Systems nichts zu tun.
+Dies ist kein offizielles Projekt von TeamSpeak Systems, der GNOME Foundation oder des Papirus Development Team. TeamSpeak ist eine Marke der TeamSpeak Systems GmbH. The GNOME logo and GNOME name are registered trademarks or trademarks of GNOME Foundation in the United States or other countries.

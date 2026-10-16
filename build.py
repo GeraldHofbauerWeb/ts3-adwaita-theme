@@ -116,11 +116,22 @@ def variants(palette, wanted, accent_override):
     return result
 
 
-def style_tokens(palette, variant):
+# Schrift je Zielsystem: GNOME verwendet Noto Sans (Manjaro) bzw. Cantarell,
+# Windows Segoe UI in etwas kleinerer Punktgröße.
+FONTS = {
+    "linux": ('"Noto Sans", "Cantarell", sans-serif', "10pt"),
+    "windows": ('"Segoe UI"', "9pt"),
+}
+
+
+def style_tokens(palette, variant, target="linux"):
     base, state = palette["base"], palette["state"]
     win, view, fg = base["window_bg"], base["view_bg"], base["fg"]
     accent = palette["accents"][variant["accent"]]
+    font_family, font_size = FONTS[target]
     return {
+        "font_family": font_family,
+        "font_size": font_size,
         "window_bg": win,
         "view_bg": view,
         "headerbar_bg": base["headerbar_bg"],
@@ -175,8 +186,8 @@ def fill_template(text, tokens, source):
 
 # --- Stil -------------------------------------------------------------------
 
-def build_style(palette, variant, styles_dir):
-    tokens = style_tokens(palette, variant)
+def build_style(palette, variant, styles_dir, target="linux"):
+    tokens = style_tokens(palette, variant, target)
     src = ROOT / "style"
     name = variant["style"]
     styles_dir.mkdir(parents=True, exist_ok=True)
@@ -432,6 +443,67 @@ def check_keys(mapping):
         print("  Unbekannt für TS:", ", ".join(unknown))
 
 
+# --- Windows-Installer ------------------------------------------------------
+
+GPL3_TEXTS = (Path("/usr/share/licenses/spdx/GPL-3.0-only.txt"),
+              Path("/usr/share/licenses/common/GPL3/license.txt"),
+              Path("/usr/share/common-licenses/GPL-3"))
+
+
+def write_bom(path, text):
+    # Inno Setup und ältere Windows-Editoren erkennen UTF-8 nur mit BOM.
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(text, encoding="utf-8-sig")
+
+
+def inno_accents(palette):
+    """Erzeugt die Pascal-Funktionen, mit denen der Installer die Akzentfarben kennt."""
+    names = list(palette["accents"])
+    labels = palette["accent_labels"]
+
+    def case_function(name, kind, values):
+        lines = [f"function {name}(I: Integer): {kind};", "begin", "  case I of"]
+        lines += [f"    {i}: Result := {value};" for i, value in enumerate(values)]
+        return lines + ["  end;", "end;", ""]
+
+    def tcolor(value):
+        r, g, b = hex_to_rgb(value)
+        return f"${b:02X}{g:02X}{r:02X}"
+
+    lines = ["// Erzeugt von build.py --windows, nicht von Hand ändern.", "",
+             "const", f"  AccentCount = {len(names)};", ""]
+    lines += case_function("AccentName", "String", [f"'{n}'" for n in names])
+    lines += case_function("AccentId", "String", [f"'{n.capitalize()}'" for n in names])
+    lines += case_function("AccentLabel", "String", [f"'{labels[n]}'" for n in names])
+    lines += case_function("AccentColor", "TColor", [tcolor(palette["accents"][n]) for n in names])
+    return "\n".join(lines)
+
+
+def build_windows(palette, mapping):
+    base = BUILD_DIR / "windows"
+    if base.exists():
+        shutil.rmtree(base)
+    payload, staging = base / "payload", base / "iconpacks"
+    # Windows kennt keine GNOME-Akzentfarbe, deshalb nur die festen Varianten.
+    for variant in variants(palette, "all", "blue"):
+        if variant["id"] == "system":
+            continue
+        build_style(palette, variant, payload / "styles", "windows")
+        build_iconpack(palette, mapping, variant, payload / "gfx", staging)
+
+    write_bom(base / "accents.iss", inno_accents(palette))
+    for name in ("LIESMICH.txt", "LIZENZHINWEISE.txt"):
+        write_bom(base / "docs" / name, (ROOT / "installer" / name).read_text(encoding="utf-8"))
+    gpl = next((p for p in GPL3_TEXTS if p.exists()), None)
+    if gpl is None:
+        sys.exit("GPL-3-Lizenztext nicht gefunden; die Papirus-Symbole dürfen nur mit ihm weitergegeben werden.")
+    write_bom(base / "docs" / "GPL-3.0.txt", gpl.read_text(encoding="utf-8"))
+
+    check_keys(mapping)
+    count = validate(payload / "styles") + validate(staging)
+    print(f"Windows-Varianten in {base.relative_to(ROOT)}, {count} SVG-Dateien geprüft.")
+
+
 # --- Ausgabe ----------------------------------------------------------------
 
 def zip_dir(source, target):
@@ -483,11 +555,18 @@ def main():
     action.add_argument("--install", action="store_true", help="Varianten ins TS3-Profil schreiben")
     action.add_argument("--uninstall", action="store_true", help="alle Varianten aus dem TS3-Profil entfernen")
     parser.add_argument("--config-dir", help="TS3-Profil (Standard: $TS3_CONFIG_DIR oder ~/.ts3client)")
+    parser.add_argument("--windows", action="store_true",
+                        help="die zehn Akzent-Varianten mit Windows-Schrift und alles für den "
+                             "Installer nach build/windows bauen")
     args = parser.parse_args()
 
     palette = load_palette()
     with open(ROOT / "iconpack" / "mapping.toml", "rb") as f:
         mapping = tomllib.load(f)
+
+    if args.windows:
+        build_windows(palette, mapping)
+        return
 
     if args.install or args.uninstall:
         target = config_dir(args)

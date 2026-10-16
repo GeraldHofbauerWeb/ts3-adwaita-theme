@@ -39,3 +39,16 @@ channel_admin = "#ff7800"
 operator = "#3584e4"
 query = "#9141ac"
 voice = "#2ec27e"
+
+# Anzeigenamen der Akzentfarben im Windows-Installer.
+[accent_labels]
+blue = "Blau"
+teal = "Blaugrün"
+green = "Grün"
+yellow = "Gelb"
+orange = "Orange"
+red = "Rot"
+pink = "Rosa"
+purple = "Violett"
+slate = "Schiefer"
+maia = "Maia"

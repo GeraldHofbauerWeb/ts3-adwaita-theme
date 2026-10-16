@@ -1,0 +1,21 @@
+Lizenzhinweise
+==============
+
+Stile, Skripte, eigene Formen und die Zuordnung der Symbole stehen unter der
+MIT-Lizenz, Copyright (c) 2026 Gerald Hofbauer.
+Quellcode: https://github.com/GeraldHofbauerWeb/ts3-adwaita-theme
+
+Die Symbole in den Paketen Papirus-Dark-* sind aus dem Papirus Icon Theme
+abgeleitet, Copyright (c) Papirus Development Team,
+https://github.com/PapirusDevelopmentTeam/papirus-icon-theme
+Sie stehen wie das Original unter der GNU General Public License Version 3,
+der vollständige Text liegt als GPL-3.0.txt bei. Die Änderungen (Farben,
+Abzeichen, zusammengesetzte Symbole) erzeugen build.py und iconpack/mapping.toml
+aus dem oben genannten Repository.
+
+Dies ist kein offizielles Projekt von TeamSpeak Systems, der GNOME Foundation
+oder des Papirus Development Team.
+
+TeamSpeak ist eine Marke der TeamSpeak Systems GmbH.
+The GNOME logo and GNOME name are registered trademarks or trademarks of
+GNOME Foundation in the United States or other countries.

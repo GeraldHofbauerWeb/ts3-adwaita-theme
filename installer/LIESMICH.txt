@@ -1,0 +1,23 @@
+Adwaita Dark für TeamSpeak 3
+============================
+
+Der Installer hat zehn Stile (Adwaita-Dark-Blue bis Adwaita-Dark-Maia) und zehn
+passende Symbolpakete (Papirus-Dark-Blue bis Papirus-Dark-Maia) nach
+%APPDATA%\TS3Client kopiert. Die Farbe aus dem Installer übernimmt TeamSpeak beim
+nächsten Start.
+
+Farbe wechseln
+  In TeamSpeak unter Extras > Optionen > Design das Thema und das Icon Pack mit
+  derselben Farbe wählen und TeamSpeak neu starten.
+
+Wenn etwas falsch aussieht
+  Gebaut und getestet wurde der Stil unter Linux, wo TeamSpeak den Qt-Stil Fusion
+  verwendet. Unter Windows hilft bei Darstellungsfehlern oft, unter
+  Extras > Optionen > Design den Stil auf "Fusion" zu stellen.
+
+Entfernen
+  Erst in TeamSpeak ein anderes Thema und Icon Pack wählen, dann unter
+  Windows-Einstellungen > Apps "Adwaita Dark für TeamSpeak 3" deinstallieren.
+
+Projekt und Quellcode
+  https://github.com/GeraldHofbauerWeb/ts3-adwaita-theme
